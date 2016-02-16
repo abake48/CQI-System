@@ -51,7 +51,7 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style3" align="center">
-                    <asp:Button ID="button_login" runat="server" Text="Log In"/>
+                    <asp:Button ID="button_login" runat="server" Text="Log In" OnClick="button_login_Click"/>
                 </td>
                 <td>&nbsp;</td>
             </tr>
