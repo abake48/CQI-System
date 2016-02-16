@@ -15,13 +15,13 @@ namespace TestProject
         {
             if(IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["UserInfoConnectionString1"].ConnectionString);
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 conn.Open();
-                string checkuser = "select count(*) from UserInfo where UserName = '"+ TextBoxUser.Text +"'";
+                string checkuser = "select count(*) from AcctReg where UserName = '"+ TextBoxUser.Text +"'";
                 SqlCommand com = new SqlCommand(checkuser, conn);
                 int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
 
-                if (temp < 0)
+                if (temp > 0)
                     Response.Write("User already exists");
 
                 conn.Close();
@@ -29,14 +29,14 @@ namespace TestProject
             }
         }
 
-        protected void Button1_Click1(object sender, EventArgs e)
+        protected void Submit_Click(object sender, EventArgs e)
         {
             try
             {
-                SqlConnection nect = new SqlConnection(ConfigurationManager.ConnectionStrings["UserInfoConnectionString1"].ConnectionString);
+                SqlConnection nect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 nect.Open();
 
-                string insertQuery = "insert into UserInfo(FirstName,LastName,UserName,Password,Email) values (@first, @last, @user, @pword, @email)";
+                string insertQuery = "insert into AcctReg(FirstName,LastName,UserName,Password,Email) values (@first, @last, @user, @pword, @email)";
                 SqlCommand com = new SqlCommand(insertQuery, nect);
 
                 com.Parameters.AddWithValue("@first", TextBoxFirst.Text);
@@ -46,14 +46,14 @@ namespace TestProject
                 com.Parameters.AddWithValue("@email", TextBoxEmail.Text);
 
                 com.ExecuteNonQuery();
-                Response.Redirect("Manager.aspx");   
+                Response.Redirect("Login.aspx");                    //redirects to Login page if successful
                 Response.Write("Registration was successful");
 
                 nect.Close();
             }
             catch(Exception ex)
             {
-                Response.Write("Error:" + ex.ToString());
+                Response.Write("Error:" + ex.ToString()); // for debug purposes
             }
         }
 

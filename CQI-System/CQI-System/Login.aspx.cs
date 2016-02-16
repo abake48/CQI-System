@@ -13,5 +13,17 @@ namespace TestProject
         {
 
         }
+
+        protected void Button_manage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("Manager.aspx");
+            }
+            catch(Exception ex)
+            {
+                Response.Write("Error:" + ex.ToString());
+            }
+        }
     }
 }

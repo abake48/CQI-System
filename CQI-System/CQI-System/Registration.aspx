@@ -41,7 +41,7 @@
                     <asp:TextBox ID="TextBoxFirst" runat="server" Width="273px"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBoxFirst" ErrorMessage="First Name is Required." Font-Bold="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBoxFirst" ErrorMessage="First Name is Required." Font-Bold="True" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -94,7 +94,7 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style3">
-                    <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click1" />
+                    <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Submit_Click" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
